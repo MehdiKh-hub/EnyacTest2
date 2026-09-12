@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <!-- .NET 10 is the current LTS release. Change to net9.0 if you must target .NET 9. -->
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <RootNamespace>MinimalApiJwtDemo</RootNamespace>
+    <UserSecretsId>b6f2a6d0-5b3e-4a1e-8e2a-minimalapijwtdemo</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- JWT Bearer authentication middleware -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.8" />
+
+    <!-- Used to CREATE the JWT in the /api/auth/login endpoint -->
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.21.0" />
+
+    <!--
+      Swagger / OpenAPI generation and UI.
+      IMPORTANT: Do NOT add "Microsoft.AspNetCore.OpenApi" alongside this package.
+      That package also ships OpenAPI model types and, depending on the versions
+      resolved, can collide with the types Swashbuckle brings in (both ultimately
+      depend on the Microsoft.OpenApi package). Swashbuckle.AspNetCore 10.x already
+      depends on Microsoft.OpenApi 2.x internally, so it is fully self-contained -
+      no other OpenAPI package is required.
+    -->
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+</Project>
